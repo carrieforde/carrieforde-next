@@ -1,3 +1,5 @@
+import HomePageContent from "app/(pages)/home.mdx";
+
 export default function Home() {
-  return <>Home page content goes here.</>;
+  return <HomePageContent />;
 }

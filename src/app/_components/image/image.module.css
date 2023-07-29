@@ -1,0 +1,18 @@
+.figure {
+  composes: clearfix from "styles/utilities.module.css";
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.circle {
+  clip-path: circle();
+  shape-outside: circle();
+  width: 256px;
+}
+
+@media (width > 600px) {
+  .right {
+    float: right;
+    margin-left: 24px;
+  }
+}
