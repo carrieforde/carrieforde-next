@@ -30,8 +30,8 @@ const Icon: React.FC<React.PropsWithChildren<BannerIconProps>> = ({
 }) => {
   const { components } = useTheme();
   const iconClasses = cn(s.icon, "banner__icon", className);
-  const textProps: Pick<TextProps, "component" | "className"> = {
-    component: "span",
+  const textProps: Pick<TextProps, "as" | "className"> = {
+    as: "span",
     className: iconClasses,
   };
 

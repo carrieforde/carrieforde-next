@@ -82,8 +82,8 @@ const Icon: React.FC<AlertIconProps> = ({
   const { components } = useTheme();
 
   const iconClasses = cn(s.icon, "alert__icon", className);
-  const textProps: Pick<TextProps, "component" | "className"> = {
-    component: "span",
+  const textProps: Pick<TextProps, "as" | "className"> = {
+    as: "span",
     className: iconClasses,
   };
 
@@ -123,7 +123,7 @@ const Alert: React.FC<AlertProps> = ({
       {children}
       {dismissible && (
         <Button type="button" onClick={handleClick} className={buttonClasses}>
-          <Text className={utilS.srOnly}>Close</Text>
+          <Text className={utilS.visuallyHidden}>Close</Text>
           <XMark />
         </Button>
       )}
@@ -188,7 +188,7 @@ export const useAlert = () => {
 
       timeout.current = setTimeout(() => dispatch({ type: "close" }), duration);
     },
-    [dispatch]
+    [components.alert.defaultDurationInMs, defaultAlertOptions, dispatch]
   );
 
   return {

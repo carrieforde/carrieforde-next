@@ -1,0 +1,34 @@
+.siteFooter {
+  margin-top: 128px;
+}
+
+.centerFlex {
+  display: flex;
+  justify-content: center;
+}
+
+.copyright {
+  column-gap: 4px;
+  composes: centerFlex;
+}
+
+.link {
+  composes: finePrint from "components/text/text.module.css";
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline wavy var(--color-secondary-500);
+}
+
+.menu {
+  --icon-fill: var(--color-primary-main);
+  --icon-height: 24px;
+  --icon-width: 24px;
+
+  align-items: baseline;
+  column-gap: 16px;
+  composes: listReset from "styles/utilities.module.css";
+  composes: centerFlex;
+  margin-top: 16px !important;
+}
