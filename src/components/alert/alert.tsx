@@ -123,7 +123,7 @@ const Alert: React.FC<AlertProps> = ({
       {children}
       {dismissible && (
         <Button type="button" onClick={handleClick} className={buttonClasses}>
-          <Text className={utilS.srOnly}>Close</Text>
+          <Text className={utilS.visuallyHidden}>Close</Text>
           <XMark />
         </Button>
       )}

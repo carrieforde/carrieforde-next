@@ -49,7 +49,7 @@ export const Icon: Story = {
     variant: "icon",
     children: (
       <>
-        <Text className={s.srOnly}>Favorite</Text>
+        <Text className={s.visuallyHidden}>Favorite</Text>
         <Heart />
       </>
     ),
@@ -66,7 +66,7 @@ import s from "styles/utilities.module.css";
 
 export const FavoriteButton: React.FC<ButtonProps> = (props) => (
   <Button {...props} type="button" color="error" variant="icon">
-    <Text className={s.srOnly}>Favorite</Text>
+    <Text className={s.visuallyHidden}>Favorite</Text>
     <Heart />
   </Button>
 );
