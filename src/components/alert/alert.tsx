@@ -82,8 +82,8 @@ const Icon: React.FC<AlertIconProps> = ({
   const { components } = useTheme();
 
   const iconClasses = cn(s.icon, "alert__icon", className);
-  const textProps: Pick<TextProps, "component" | "className"> = {
-    component: "span",
+  const textProps: Pick<TextProps, "as" | "className"> = {
+    as: "span",
     className: iconClasses,
   };
 
@@ -188,7 +188,7 @@ export const useAlert = () => {
 
       timeout.current = setTimeout(() => dispatch({ type: "close" }), duration);
     },
-    [dispatch]
+    [components.alert.defaultDurationInMs, defaultAlertOptions, dispatch]
   );
 
   return {

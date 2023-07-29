@@ -14,15 +14,15 @@ type TextVariant =
 type TComponent<T extends HTMLParagraphElement = HTMLParagraphElement> = T;
 
 export type TextProps = React.PropsWithChildren<{
-  component?: TextComponent;
+  as?: TextComponent;
   variant?: TextVariant;
   className?: string;
 }> &
   React.HTMLProps<TComponent>;
 
 export const Text = React.forwardRef<TComponent, TextProps>(
-  ({ children, className, component, variant = "body1", ...props }, ref) => {
-    const Comp = variant === "title" && !component ? "h1" : component ?? "p";
+  ({ children, className, as, variant = "body1", ...props }, ref) => {
+    const Comp = variant === "title" && !as ? "h1" : as ?? "p";
     const textClasses = cn(
       s.text,
       [s[variant]],
