@@ -1,0 +1,24 @@
+.mainNavigation {
+  display: inline-flex;
+  gap: 12px;
+}
+
+.link {
+  line-height: 1.75;
+}
+
+@media (width > 760px) {
+  .mainNavigation {
+    left: calc(50% + 640px / 2); /* 50% + page width / 2 */
+    margin-left: 24px;
+    position: fixed;
+    top: 124px; /* aligns with top of page content */
+    writing-mode: vertical-lr;
+  }
+}
+
+@media (width > 1000px) {
+  .mainNavigation {
+    margin-left: 36px;
+  }
+}

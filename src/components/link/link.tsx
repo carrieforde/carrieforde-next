@@ -2,7 +2,7 @@ import { HTMLProps, forwardRef } from "react";
 import cn from "classnames";
 import s from "./link.module.css";
 
-type LinkProps = React.PropsWithChildren<{
+export type LinkProps = React.PropsWithChildren<{
   variant?: "navigation" | "skipLink";
   color?: "primary" | "inherit";
   isActive?: boolean;
