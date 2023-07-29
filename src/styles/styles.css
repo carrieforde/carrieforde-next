@@ -92,16 +92,16 @@
   --color-warning-light: var(--color-warning-50);
   --color-warning-dark: var(--color-warning-900);
 
-  --color-success-50: #effcf6;
-  --color-success-100: #c6f7e2;
-  --color-success-200: #8eedc7;
-  --color-success-300: #65d6ad;
-  --color-success-400: #3ebd93;
-  --color-success-500: #27ab83;
-  --color-success-600: #199473;
-  --color-success-700: #147d64;
-  --color-success-800: #0c6b58;
-  --color-success-900: #014d40;
+  --color-success-50: #e3f9e5;
+  --color-success-100: #c1f2c7;
+  --color-success-200: #91e697;
+  --color-success-300: #51ca58;
+  --color-success-400: #31b237;
+  --color-success-500: #18981d;
+  --color-success-600: #0f8613;
+  --color-success-700: #0e7817;
+  --color-success-800: #07600e;
+  --color-success-900: #014807;
   --color-success-main: var(--color-success-500);
   --color-success-contrast: var(--light-text-color, #fff);
   --color-success-light: var(--color-success-50);
@@ -153,5 +153,6 @@ body {
   color: var(--text-color);
   font-family: var(--font-family-body);
   line-height: var(--base-line-height);
+  margin: 0;
   word-wrap: break-word;
 }

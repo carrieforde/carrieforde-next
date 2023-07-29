@@ -1,0 +1,11 @@
+.site {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  padding: 24px 24px 48px;
+  width: 640px;
+}
+
+.siteMain {
+  margin-top: 48px;
+}
