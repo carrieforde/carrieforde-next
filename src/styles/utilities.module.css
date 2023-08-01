@@ -28,3 +28,9 @@
   margin: 0;
   padding: 0;
 }
+
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}

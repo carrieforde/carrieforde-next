@@ -27,6 +27,15 @@
   composes: visuallyHiddenFocusable from "styles/utilities.module.css";
 }
 
+.content {
+  text-decoration-color: var(
+    --link-content-text-decoration-color,
+    var(--color-primary-main)
+  );
+  text-decoration-line: var(--link-content-text-decoration-line, underline);
+  text-decoration-style: var(--link-text-decoration-style, wavy);
+}
+
 .primary {
   color: var(--link-color-primary, var(--color-primary-700));
 }

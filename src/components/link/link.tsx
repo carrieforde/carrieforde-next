@@ -3,7 +3,7 @@ import cn from "classnames";
 import s from "./link.module.css";
 
 export type LinkProps = React.PropsWithChildren<{
-  variant?: "navigation" | "skipLink";
+  variant?: "content" | "navigation" | "skipLink";
   color?: "primary" | "inherit";
   isActive?: boolean;
 }> &
@@ -14,6 +14,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     const linkClasses = cn("link", s.link, className, {
       [s.navigation]: variant === "navigation",
       [s.skipLink]: variant === "skipLink",
+      [s.content]: variant === "content",
       [s.primary]: color === "primary" || variant === "navigation",
       [s.inherit]: color === "inherit",
       [s.navigationActive]: variant === "navigation" && isActive,
