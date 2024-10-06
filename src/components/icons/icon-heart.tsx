@@ -1,5 +1,5 @@
-import { IconProps } from '@/components/icons/types';
-import { iconClasses } from '@/components/icons/utils';
+import { IconProps } from "@/components/icons/types";
+import { iconClasses } from "@/components/icons/utils";
 
 export const IconHeart: React.FC<IconProps> = ({ className }) => (
   <svg
