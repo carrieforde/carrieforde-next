@@ -115,14 +115,16 @@
 
   --border-radius: 4px;
 
-  --font-family-body: 'Libre Franklin', sans-serif;
-  --font-family-monospace: 'IBM Plex Mono', monospace;
+  --font-family-body: "Libre Franklin", sans-serif;
+  --font-family-monospace: "IBM Plex Mono", monospace;
 
   --dark-text-color: var(--color-default-main);
   --light-text-color: #fff;
 
   --body-bg-color: #fff;
   --text-color: var(--dark-text-color);
+
+  --z-index-tab-button-after: 9;
 }
 
 @media screen and (width >= 600px) {
