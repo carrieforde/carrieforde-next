@@ -1,8 +1,7 @@
 import * as React from "react";
-import {
-  Theme,
-  theme as defaultTheme,
-} from "@/components/theme-provider/theme";
+
+import { theme as defaultTheme } from "@/components/theme/theme";
+import { Theme } from "@/components/theme/types";
 
 type ThemeContextProps = Theme;
 
