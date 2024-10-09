@@ -133,3 +133,10 @@
     --base-font-size: 18px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-bg-color: var(--color-default-800);
+    --text-color: var(--light-text-color);
+  }
+}
