@@ -125,6 +125,7 @@
   --text-color: var(--dark-text-color);
 
   --z-index-tab-button-after: 9;
+  --z-index-drawer: 10;
 }
 
 @media screen and (width >= 600px) {
