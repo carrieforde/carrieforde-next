@@ -126,6 +126,9 @@
 
   --z-index-tab-button-after: 9;
   --z-index-drawer: 10;
+
+  /** Component settings */
+  --link-color: var(--color-primary-main);
 }
 
 @media screen and (width >= 600px) {
@@ -138,5 +141,8 @@
   :root {
     --body-bg-color: var(--color-default-800);
     --text-color: var(--light-text-color);
+
+    /** Component settings */
+    --link-color: var(--color-primary-200);
   }
 }
