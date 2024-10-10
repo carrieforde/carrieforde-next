@@ -31,3 +31,15 @@
   top: 124px;
   writing-mode: vertical-lr;
 }
+
+.main {
+  margin-block-start: calc(var(--base-spacing) * 6);
+}
+
+.footer {
+  margin-block-start: 128px;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--base-spacing) * 2);
+  flex-direction: column;
+}

@@ -1,12 +1,15 @@
 import * as React from "react";
 
+import { Box } from "@/components/box/box";
 import { Link } from "@/components/link/link";
 import { Menu } from "@/components/menu/menu";
 import s from "@/components/site/site.module.css";
 import {
   SiteBrandingProps,
   SiteComposition,
+  SiteFooterProps,
   SiteHeaderProps,
+  SiteMainProps,
   SiteNavigationProps,
   SiteProps,
 } from "@/components/site/types";
@@ -19,11 +22,13 @@ import { VisuallyHidden } from "@/components/visually-hidden/visually-hidden";
  */
 
 export const Site: React.FC<SiteProps> & SiteComposition = ({ children }) => (
-  <div className={s.site}>{children}</div>
+  <Box className={s.site}>{children}</Box>
 );
 
 const Header: React.FC<SiteHeaderProps> = ({ children }) => (
-  <header className={s.header}>{children}</header>
+  <Box as="header" className={s.header}>
+    {children}
+  </Box>
 );
 
 const Branding: React.FC<SiteBrandingProps> = ({
@@ -31,18 +36,32 @@ const Branding: React.FC<SiteBrandingProps> = ({
   homepagePath = "/",
   siteName,
 }) => (
-  <div className={s.branding}>
+  <Box className={s.branding}>
     <Link href={homepagePath}>{children}</Link>
     <VisuallyHidden>{siteName}</VisuallyHidden>
-  </div>
+  </Box>
 );
 
 const Navigation: React.FC<SiteNavigationProps> = ({ children }) => (
-  <nav className={s.navigation}>
+  <Box as="nav" className={s.navigation}>
     <Menu>{children}</Menu>
-  </nav>
+  </Box>
+);
+
+const Main: React.FC<SiteMainProps> = ({ children }) => (
+  <Box as="main" className={s.main}>
+    {children}
+  </Box>
+);
+
+const Footer: React.FC<SiteFooterProps> = ({ children }) => (
+  <Box as="footer" className={s.footer}>
+    {children}
+  </Box>
 );
 
 Site.Branding = Branding;
 Site.Header = Header;
 Site.Navigation = Navigation;
+Site.Main = Main;
+Site.Footer = Footer;
