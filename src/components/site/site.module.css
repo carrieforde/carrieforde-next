@@ -1,0 +1,15 @@
+.site {
+  --site-bg-color: #fff;
+  --site-padding-block-end: calc(var(--base-spacing) * 6);
+  --site-padding-block-start: calc(var(--base-spacing) * 3);
+  --site-padding-inline: calc(var(--base-spacing) * 3);
+  --site-width: 640px;
+
+  background-color: var(--site-bg-color);
+  margin-inline: auto;
+  max-width: 100%;
+  padding-block-end: var(--site-padding-block-end);
+  padding-block-start: var(--site-padding-block-start);
+  padding-inline: var(--site-padding-inline);
+  width: var(--site-width);
+}

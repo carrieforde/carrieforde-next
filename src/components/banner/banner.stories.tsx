@@ -1,8 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { Banner } from "@/components/banner/banner";
-import { Theme, theme as defaultTheme } from "@/components/theme/theme";
+import { theme as defaultTheme } from "@/components/theme/theme";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { Theme } from "@/components/theme/types";
 
 const meta: Meta<typeof Banner> = {
   title: "Components/Banner",
