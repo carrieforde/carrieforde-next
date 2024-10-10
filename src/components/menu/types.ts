@@ -1,11 +1,9 @@
 import { LinkProps } from "@/components/link/types";
-import { Orientation } from "@/types/orientation";
 
 type MenuVariant = "default" | "icon";
 
 export type MenuProps = React.PropsWithChildren<{
   variant?: MenuVariant;
-  orientation?: Orientation;
   className?: string;
 }>;
 

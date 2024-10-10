@@ -9,7 +9,10 @@ export type SiteBrandingProps = React.PropsWithChildren<{
   homepagePath?: string;
 }>;
 
+export type SiteNavigationProps = React.PropsWithChildren;
+
 export interface SiteComposition {
   Header: React.FC<SiteHeaderProps>;
   Branding: React.FC<SiteBrandingProps>;
+  Navigation: React.FC<SiteNavigationProps>;
 }
