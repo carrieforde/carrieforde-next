@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 
+import { Logo } from "@/assets/logo/logo";
+import { Link } from "@/components/link/link";
 import { Site } from "@/components/site/site";
-import { SiteProps } from "@/components/site/types";
 
 const meta: Meta<typeof Site> = {
   title: "Components/Site",
@@ -14,7 +15,17 @@ type Story = StoryObj<typeof Site>;
 
 export const Primary: Story = {
   args: {
-    children: "This is the default Site",
+    children: [
+      <Site.Header key="header">
+        <Link href="#main" variant="skipLink">
+          Skip to content
+        </Link>
+        <Site.Branding siteName="Carrie Forde">
+          <Logo />
+        </Site.Branding>
+      </Site.Header>,
+      "This is the default Site",
+    ],
   },
   name: "Default",
 };

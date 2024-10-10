@@ -13,3 +13,14 @@
   padding-inline: var(--site-padding-inline);
   width: var(--site-width);
 }
+
+.header {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
+}
+
+.branding a {
+  display: block;
+}
