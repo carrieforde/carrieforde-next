@@ -20,7 +20,6 @@ export const Drawer: React.FC<DrawerProps> = ({
   onClose,
   variant = "default",
 }) => {
-  const bodyRef = React.useRef<HTMLBodyElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
   const classes = clsx(s.drawer, s.left, {

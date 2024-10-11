@@ -1,7 +1,7 @@
 import { Props } from "@/components/utilities/types";
 
 export const ListTagName = "ul" satisfies React.ElementType;
-type ListTagName = typeof ListTagName;
+type ListTagName = "ul" | "ol";
 
 type ListOptions<T extends React.ElementType = ListTagName> = {
   as?: T;

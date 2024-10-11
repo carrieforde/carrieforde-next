@@ -1,31 +1,38 @@
 import clsx from "clsx";
 import * as React from "react";
 
-import { ListComposition, ListTagName } from "@/components/list/types";
+import { Box } from "@/components/box/box";
+import {
+  ListComposition,
+  ListItemTagName,
+  ListTagName,
+} from "@/components/list/types";
 import { forwardRef } from "@/components/utilities/react";
 
-export const List: ListComposition = forwardRef(
-  // @TODO: Fix typing with forwardRef and ListComposition
-  function List({ as = ListTagName, children, className, ...props }, ref) {
-    const classes = clsx("list", className);
+const ListComponent = forwardRef(function List(
+  { as = ListTagName, children, className, ...props },
+  ref,
+) {
+  const classes = clsx("list", className);
 
-    return React.createElement(
-      as,
-      { ref, className: classes, ...props },
-      children,
-    );
-  },
-);
+  return (
+    <Box as={as} ref={ref} className={classes} {...props}>
+      {children}
+    </Box>
+  );
+});
 
-List.Item = forwardRef(function ListItem(
-  { as = "li", children, className, ...props },
+const Item = forwardRef(function ListItem(
+  { as = ListItemTagName, children, className, ...props },
   ref,
 ) {
   const classes = clsx("list__item", className);
 
-  return React.createElement(
-    as,
-    { ref, className: classes, ...props },
-    children,
+  return (
+    <Box {...props} as={as} className={classes} ref={ref}>
+      {children}
+    </Box>
   );
 });
+
+export const List: ListComposition = Object.assign(ListComponent, { Item });

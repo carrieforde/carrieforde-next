@@ -15,7 +15,7 @@ import { Text } from "@/components/text/text";
 import { Timestamp } from "@/components/timestamp/timestamp";
 import { forwardRef } from "@/components/utilities/react";
 
-export const Card: CardComposition = forwardRef(function Card(
+const CardComponent = forwardRef(function Card(
   { as = TagName, children, ...props },
   ref,
 ) {
@@ -58,6 +58,8 @@ const Meta: React.FC<CardMetaProps> = ({ date, timeToRead }) => (
   </Text>
 );
 
-Card.Header = Header;
-Card.Title = Title;
-Card.Meta = Meta;
+export const Card: CardComposition = Object.assign(CardComponent, {
+  Header,
+  Title,
+  Meta,
+});

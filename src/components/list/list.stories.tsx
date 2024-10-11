@@ -29,35 +29,6 @@ export const OrderedList: Story = {
   },
 };
 
-export const DescriptionList: Story = {
-  args: {
-    ...UnorderedList.args,
-    as: "dl",
-    children: [
-      <List.Item as="dt" key="dt-1">
-        Term 1
-      </List.Item>,
-      <List.Item as="dd" key="dd-1">
-        Description 1
-      </List.Item>,
-
-      <List.Item as="dt" key="dt-2">
-        Term 2
-      </List.Item>,
-      <List.Item as="dd" key="dd-2">
-        Description 2
-      </List.Item>,
-
-      <List.Item as="dt" key="dt-3">
-        Term 3
-      </List.Item>,
-      <List.Item as="dd" key="dd-3">
-        Description 3
-      </List.Item>,
-    ],
-  },
-};
-
 export const NestedList: Story = {
   args: {
     ...UnorderedList.args,

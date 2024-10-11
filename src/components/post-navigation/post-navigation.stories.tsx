@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { PostNavigation } from "@/components/post-navigation/post-navigation";
-import { Text } from "@/components/text/text";
 
 const meta: Meta<typeof PostNavigation> = {
   title: "Components/Post Navigation",
