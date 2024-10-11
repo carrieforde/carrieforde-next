@@ -12,6 +12,7 @@ import {
 } from "@/components/card/types";
 import { Link } from "@/components/link/link";
 import { Text } from "@/components/text/text";
+import { Timestamp } from "@/components/timestamp/timestamp";
 import { forwardRef } from "@/components/utilities/react";
 
 export const Card: CardComposition = forwardRef(function Card(
@@ -51,7 +52,7 @@ const Title: React.FC<CardTitleProps> = ({ as = "h2", children, href }) => {
 
 const Meta: React.FC<CardMetaProps> = ({ date, timeToRead }) => (
   <Text as="span" className={s.meta} variant="finePrint">
-    <Text as="time">{date}</Text>
+    <Timestamp date={date} variant="finePrint" />
     <Text as="span">&#9656;</Text>
     <Text>{timeToRead} minute read</Text>
   </Text>

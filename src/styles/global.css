@@ -51,6 +51,10 @@ p + p {
   margin-top: 32px;
 }
 
+strong {
+  font-weight: 600;
+}
+
 a {
   color: var(--link-color);
   text-decoration-color: var(--link-text-decoration-color);
@@ -67,8 +71,8 @@ a:focus-visible {
   outline-color: var(--link-outline-color);
 }
 
-a[target='_blank']::after {
-  content: '↗';
+a[target="_blank"]::after {
+  content: "↗";
   margin-left: 0.25em;
 }
 
