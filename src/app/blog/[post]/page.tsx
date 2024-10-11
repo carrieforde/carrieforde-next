@@ -1,3 +1,4 @@
+/* eslint-disable check-file/folder-naming-convention */
 /* eslint-disable check-file/filename-naming-convention */
 import { Box } from "@/components/box/box";
 

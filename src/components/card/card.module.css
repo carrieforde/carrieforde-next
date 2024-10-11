@@ -15,3 +15,8 @@
   display: inline-flex;
   gap: calc(var(--base-spacing) / 2);
 }
+@media (prefers-color-scheme: dark) {
+  .title {
+    --card-title-color: var(--color-default-light);
+  }
+}
