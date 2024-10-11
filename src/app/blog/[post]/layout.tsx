@@ -15,9 +15,11 @@ export default function Layout({
 
   const data = useMemo(
     () =>
-      search
-        .entries()
-        .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {}),
+      search.size > 0
+        ? search
+            .entries()
+            .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
+        : {},
     [search],
   );
 
