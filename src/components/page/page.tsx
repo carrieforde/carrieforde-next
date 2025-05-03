@@ -1,3 +1,5 @@
+import parse from "html-react-parser";
+
 import { Box } from "@/components/box/box";
 import {
   PageComposition,
@@ -20,11 +22,25 @@ const Title: React.FC<PageTitleProps> = ({ children }) => {
 };
 
 const Description: React.FC<PageDescriptionProps> = ({ description }) => {
-  if (!description) return null;
+  if (!description) {
+    return null;
+  }
+
+  if (Array.isArray(description) && description.length > 0) {
+    return (
+      <>
+        {description.map((desc, index) => (
+          <Text as="p" variant="subtitle" key={index}>
+            {desc && parse(desc)}
+          </Text>
+        ))}
+      </>
+    );
+  }
 
   return (
     <Text as="p" variant="subtitle">
-      {description.join(" ")}
+      {typeof description === "string" && parse(description)}
     </Text>
   );
 };
