@@ -1,43 +1,59 @@
 /* eslint-disable check-file/folder-naming-convention */
-import { Box } from "@/components/box/box";
-import { Card } from "@/components/card/card";
-import { Link } from "@/components/link/link";
-import { List } from "@/components/list/list";
-import { Page } from "@/components/page/page";
-import { Text } from "@/components/text/text";
+import { notFound } from "next/navigation";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 
-export default function Home() {
+import { Page } from "@/components/page/page";
+import { TINA_COMPONENTS } from "@/lib/tina/tina-components";
+import client from "@tina/__generated__/client";
+
+type PageTemplateProps = {
+  params: Promise<{
+    page: string;
+  }>;
+  searchParams: Record<string, string>;
+};
+
+export async function generateStaticParams() {
+  const pagesResponse = await client.queries.pageConnection();
+  const pages = pagesResponse.data.pageConnection.edges?.map((page) => ({
+    page: page?.node?._sys.filename,
+  }));
+
+  return pages || [];
+}
+
+async function getPageData(page: string) {
+  let data;
+
+  try {
+    data = await client.queries.page({ relativePath: `${page}.mdx` });
+  } catch {
+    // Check if the page exists. If not, return a 404.
+    notFound();
+  }
+
+  return data;
+}
+
+export async function generateMetadata({ params }: PageTemplateProps) {
+  const { page } = await params;
+  const { data } = await getPageData(page);
+
+  return {
+    title: data.page.title,
+    description: data.page.description,
+  };
+}
+
+export default async function PageTemplate({ params }: PageTemplateProps) {
+  const { page } = await params;
+  const { data } = await getPageData(page);
+
   return (
     <Page>
-      <Page.Title>Blog</Page.Title>
-      <Page.Description
-        description={[
-          "Occasional posts on JavaScript, WordPress, and front end development.",
-        ]}
-      />
-      <Box as="section">
-        <List>
-          <List.Item>
-            <Card>
-              <Card.Header key="header">
-                <Link href="/javascript" variant="overline">
-                  JavaScript
-                </Link>
-                <Card.Title href="/blog/dynamic-data-merge-fields">
-                  Inject dynamic data into static content with merge fields
-                </Card.Title>
-
-                <Card.Meta date="March 08, 2021" timeToRead={9} />
-              </Card.Header>
-              <Text key="content">
-                Last year, I worked on upgrading one of our consumer-facing
-                applications from a standard Angular application with static
-                content hard-coded…
-              </Text>
-            </Card>
-          </List.Item>
-        </List>
-      </Box>
+      <Page.Title>{data.page.title}</Page.Title>
+      <Page.Description description={data.page.description} />
+      <TinaMarkdown components={TINA_COMPONENTS} content={data.page.body} />
     </Page>
   );
 }
