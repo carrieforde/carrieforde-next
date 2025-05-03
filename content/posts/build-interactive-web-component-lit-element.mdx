@@ -48,7 +48,7 @@ npm init
 
 Follow the prompts on the screen to initialize your `npm` project.
 
-![Initializing an npm project](initialize-npm-package.jpg)
+![Initializing an npm project](/admin/images/posts/build-interactive-web-component-lit-element/initialize-npm-package.jpg)
 
 Next, install Lit Element.
 
@@ -102,7 +102,7 @@ Now that the web component is defined, we're ready to use it in our HTML. Let's 
 
 ```html
 <!-- index.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>My Accordion</title>
@@ -118,7 +118,7 @@ The `script` tag imports the `index.js` file where we defined our new web compon
 
 `<my-accordion></my-accordion>` is what actually outputs our new web component to the screen. If you kick off `polymer serve` in your terminal, and visit the link, you should see our new web component. 🎉
 
-![Our simple Hello World component in the browser](hello-world-web-component.jpg)
+![Our simple Hello World component in the browser](/admin/images/posts/build-interactive-web-component-lit-element/hello-world-web-component.jpg)
 
 We've taken our first step to creating a web component, by creating a component that outputs static text, but now it's time to get into building our accordion.
 
@@ -193,7 +193,7 @@ Then add an instance of the panel inside your `my-accordion` element in `index.h
 
 Now if we refresh the browser, we should see our updated web component with the `my-accordion-panel` component.
 
-![Accordion with panel component](accordion-panel-with-static-content.jpg)
+![Accordion with panel component](/admin/images/posts/build-interactive-web-component-lit-element/accordion-panel-with-static-content.jpg)
 
 This is a good start, but we want to allow users to add their own content to `my-accordion-panel`. The easiest change to make the component more flexible is to replace the content within the `div` with a `slot`. Next, we'll introduce properties to handle the button text and panel state.
 
@@ -404,7 +404,7 @@ To change the `border` style in my site CSS, I simply add a declaration to set t
 }
 ```
 
-![The accordion with a custom property set at `:root`](accordion-with-custom-border-property.jpg)
+![The accordion with a custom property set at `:root`](/admin/images/posts/build-interactive-web-component-lit-element/accordion-with-custom-border-property.jpg)
 
 Using `:root` here allows me to set the variable at the root-level (i.e. `html`-level). If necessary, variables can be scoped to classes or tags.
 
@@ -882,7 +882,10 @@ And that's it! We now have a fully-functioning, accessible accordion web compone
 <alcatraz-accordion>
   <alcatraz-accordion-panel label="K2" expanded="true">
     <figure>
-      <img src="k2-in-the-sun@2x.jpg" alt="K2 enjoying a sunny day" />
+      <img
+        src="/admin/images/posts/build-interactive-web-component-lit-element/k2-in-the-sun@2x.jpg"
+        alt="K2 enjoying a sunny day"
+      />
       <figcaption>
         Age: 13
         <br />
@@ -893,7 +896,7 @@ And that's it! We now have a fully-functioning, accessible accordion web compone
   <alcatraz-accordion-panel label="Whitney">
     <figure>
       <img
-        src="whitney-in-bed@2x.jpg"
+        src="/admin/images/posts/build-interactive-web-component-lit-element/whitney-in-bed@2x.jpg"
         alt="Whitney enjoying an afternoon in bed"
       />
       <figcaption>
@@ -905,7 +908,10 @@ And that's it! We now have a fully-functioning, accessible accordion web compone
   </alcatraz-accordion-panel>
   <alcatraz-accordion-panel label="Minnie">
     <figure>
-      <img src="minnie-cuddling-mouse.jpg" alt="Minnie cuddling a toy mouse" />
+      <img
+        src="/admin/images/posts/build-interactive-web-component-lit-element/minnie-cuddling-mouse.jpg"
+        alt="Minnie cuddling a toy mouse"
+      />
       <figcaption>
         Age: 4<br />
         Likes: toy mice & birdies, playtime, getting into trouble
@@ -914,7 +920,10 @@ And that's it! We now have a fully-functioning, accessible accordion web compone
   </alcatraz-accordion-panel>
   <alcatraz-accordion-panel label="Paul">
     <figure>
-      <img src="paul-in-sun.jpg" alt="Paul hanging out in the afternoon sun" />
+      <img
+        src="/admin/images/posts/build-interactive-web-component-lit-element/paul-in-sun.jpg"
+        alt="Paul hanging out in the afternoon sun"
+      />
       <figcaption>
         Age: 3<br />
         Likes: his humans, cuddles, high places
