@@ -1,10 +1,8 @@
 /* eslint-disable check-file/folder-naming-convention */
 /* eslint-disable check-file/filename-naming-convention */
 import { notFound } from "next/navigation";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
 
-import { Page } from "@/components/page/page";
-import { TINA_COMPONENTS } from "@/lib/tina/tina-components";
+import { SinglePost } from "@/features/single-post/single-post";
 import client from "@tina/__generated__/client";
 
 type PostTemplateProps = {
@@ -48,13 +46,7 @@ export async function generateMetadata({ params }: PostTemplateProps) {
 
 export default async function PostTemplate({ params }: PostTemplateProps) {
   const { post } = await params;
-  const { data } = await getPostData(post);
+  const props = await getPostData(post);
 
-  return (
-    <Page>
-      <Page.Title>{data.post.title}</Page.Title>
-      {/* <Page.Description description={data.post.description} /> */}
-      <TinaMarkdown components={TINA_COMPONENTS} content={data.post.body} />
-    </Page>
-  );
+  return <SinglePost {...props} />;
 }
