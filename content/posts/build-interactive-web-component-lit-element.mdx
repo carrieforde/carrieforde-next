@@ -1,18 +1,18 @@
 ---
 title: How to build an interactive web component with LitElement
-date: 2020-03-28
+description:
+  - >-
+    Last spring, I worked on a project where we supplied static content from a
+    WordPress site to a React app via the REST API. The challenge we faced in
+    this project was that the content from the WordPress site included
+    interactive components.
+date: 2020-03-28T00:00:00.000Z
 category: JavaScript
 showToc: true
-description:
-  - Last spring, I worked on a project where we supplied static content from a WordPress site to a React app via the REST API. The challenge we faced in this project was that the content from the WordPress site included interactive components.
 ---
 
 <Banner variant="info">
-  You can find the
-  <a href="https://github.com/alcatraz-components/accordion">
-    source code for the accordion web component
-  </a>
-  on Github.
+  You can find the [source code for the accordion web component](https://github.com/alcatraz-components/accordion) on Github.
 </Banner>
 
 Last spring, I worked on a project where we supplied static content from a WordPress site to a React app via the REST API. The challenge we faced in this project was that the content from the WordPress site included interactive components.
@@ -31,10 +31,10 @@ You won't need extensive command line experience for this tutorial, but you will
 
 To demonstrate how web components can handle interactivity, we're going to build an accordion component. Here are the requirements for our accordion:
 
-- allow a user to expand & collapse panels
-- have an option to determine whether one panel is open at a time, or if several can be open
-- use accessible markup
-- support keyboard users
+* allow a user to expand & collapse panels
+* have an option to determine whether one panel is open at a time, or if several can be open
+* use accessible markup
+* support keyboard users
 
 ## Spinning up the accordion project
 
@@ -56,7 +56,7 @@ Next, install Lit Element.
 npm install lit-element
 ```
 
-As the site states, [Lit Element](https://lit-element.polymer-project.org/) is &ldquo;a simple base class for creating fast, lightweight web components,&rdquo; that makes spinning up new web components super easy. It offers utilities for easily styling web components, creating component templates, and lifecycle hooks for updating your web component.
+As the site states, [Lit Element](https://lit-element.polymer-project.org/) is “a simple base class for creating fast, lightweight web components,” that makes spinning up new web components super easy. It offers utilities for easily styling web components, creating component templates, and lifecycle hooks for updating your web component.
 
 Before proceeding to the next step, review the [Lit Element starting guide](https://lit-element.polymer-project.org/guide/start) to setup your environment to use Lit Element locally. Most importantly, you should make sure you have the [`polymer-cli`](https://www.npmjs.com/package/polymer-cli) installed.
 
@@ -76,9 +76,9 @@ Now that our project is spun up, we're ready to start coding.
 
 ### Scaffolding a basic component
 
-Let's start by simply outputting &ldquo;Hello World&rdquo;. Add the following code to `index.js`:
+Let's start by simply outputting “Hello World”. Add the following code to `index.js`:
 
-```js
+```javascript
 // index.js
 import { LitElement, html } from "lit-element";
 
@@ -139,11 +139,11 @@ class MyAccordion extends LitElement {
 customElements.define("my-accordion", MyAccordion);
 ```
 
-A `slot` is like a placeholder for other content in a component. In this case, we've left our `slot` unnamed, but you can name slots to have specific areas for your component's content. At this point, this is all we need the accordion file to do. We'll use this component as a wrapper for our &ldquo;panels&rdquo;, and actually output our content in a separate web component.
+A `slot` is like a placeholder for other content in a component. In this case, we've left our `slot` unnamed, but you can name slots to have specific areas for your component's content. At this point, this is all we need the accordion file to do. We'll use this component as a wrapper for our “panels”, and actually output our content in a separate web component.
 
 Let's go ahead and create a new JS file called `panel.js`. Following the [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/) for accordions, we'll do our best to ensure our panel template uses semantic markup and ARIA attributes appropriately.
 
-```js
+```javascript
 import { LitElement, html } from "lit-element";
 
 class MyAccordionPanel extends LitElement {
@@ -178,7 +178,7 @@ customElements.define("my-accordion-panel", MyAccordionPanel);
 
 We can quickly test the panel behaves as expected. First, add the following line to `index.js`:
 
-```js
+```javascript
 import "./panel";
 ```
 
@@ -197,7 +197,7 @@ Now if we refresh the browser, we should see our updated web component with the 
 
 This is a good start, but we want to allow users to add their own content to `my-accordion-panel`. The easiest change to make the component more flexible is to replace the content within the `div` with a `slot`. Next, we'll introduce properties to handle the button text and panel state.
 
-```js
+```javascript
 import { LitElement, html } from "lit-element";
 
 class MyAccordionPanel extends LitElement {
@@ -256,7 +256,7 @@ The first thing we're doing is setting up the class `constructor`. Because the p
 Next, we set up the `properties()` getter from LitElement. Properties are useful because LitElement will always be listening for changes to properties, and will update our component appropriately when changes are detected. In this instance, we're doing two things when call the `properties` getter:
 
 1. Declare the properties we're going to use in the component.
-1. Convert the property type.
+2. Convert the property type.
 
 There's a bit of nuance when thinking about converting the property type, so let's look at an example.
 
@@ -299,7 +299,7 @@ The basic mechanics of the accordion are fine, but it doesn't look pretty, so in
 
 We'll start our styles by adding a border around `my-accordion`. To do this, we'll add a `styles()` getter to the `MyAccordion` class:
 
-```js
+```javascript
 import { LitElement, html, css } from "lit-element";
 import "./panel";
 
@@ -321,11 +321,11 @@ class MyAccordion extends LitElement {
 customElements.define("my-accordion", MyAccordion);
 ```
 
-We use `:host` here to target the _host_ (i.e. container) of the [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM). The shadow DOM here being the contents of our component's HTML template. By default, a host does not have any properties, so in order to get the `border` to display properly, `display: block` needs to be added.
+We use `:host` here to target the *host* (i.e. container) of the [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM). The shadow DOM here being the contents of our component's HTML template. By default, a host does not have any properties, so in order to get the `border` to display properly, `display: block` needs to be added.
 
 A border is the only style I want to add to `my-accordion` for now, so let's move onto styling the panel.
 
-```js
+```javascript
 // panel.js
 class MyAccordionPanel extends LitElement {
   /* ... */
@@ -371,7 +371,7 @@ But if adding `button { background-color: hotpink; }` in the application styles 
 
 [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), commonly referred to as CSS variables, hold the key to manipulating styles within the shadow DOM of a web component. Let's look at the panel as an example. Currently, we have a border declaration, but we can update this to use a CSS custom property:
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   static get styles() {
@@ -392,7 +392,7 @@ customElements.define("my-accordion", MyAccordion);
 To use CSS custom properties as values in your CSS, it must be wrapped in `var()`, which accepts two parameters:
 
 1. The custom property (variable) name, which must be proceeded with `--`.
-1. An optional default value in the case the variable passed in is not defined.
+2. An optional default value in the case the variable passed in is not defined.
 
 In the above example, I used our previous `border` declaration as my default for the `--my-accordion-border` variable.
 
@@ -404,13 +404,13 @@ To change the `border` style in my site CSS, I simply add a declaration to set t
 }
 ```
 
-![The accordion with a custom property set at `:root`](/admin/images/posts/build-interactive-web-component-lit-element/accordion-with-custom-border-property.jpg)
+![The accordion with a custom property set at \:root](/admin/images/posts/build-interactive-web-component-lit-element/accordion-with-custom-border-property.jpg)
 
 Using `:root` here allows me to set the variable at the root-level (i.e. `html`-level). If necessary, variables can be scoped to classes or tags.
 
 Now let's update the panel to allow more customization:
 
-```js
+```javascript
 // panel.js
 class MyAccordionPanel extends LitElement {
   /* ... */
@@ -456,7 +456,7 @@ In its current state, our accordion functions pretty well. We can open and close
 
 In order to support the single-panel functionality of the accordion, we need to keep track of the panel states in `MyAccordion` rather than individually in `MyAccordionPanel`. An individual panel only knows about it's state, and never about the state of it's neighbors. So if I have my "K2" panel open, and I click "Minnie", "K2" won't know to close because he only cares about his state.
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   constructor() {
@@ -484,7 +484,7 @@ So the first thing we'll need is a list of all the panels (`this.panels`) that b
 
 Next, we'll implement the `shouldUpdate()` lifecycle method. `shouldUpdate()` runs any time our web components' properties change (including when they are initialized in the `constructor`).
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   /* ... */
@@ -514,14 +514,14 @@ customElements.define("my-accordion", MyAccordion);
 We're doing a few things here to instantiate our component:
 
 1. Updating the `panels` array to a list of DOM elements (i.e. `my-accordion-panel`)
-1. Setting the `tabIndex` on each panel
-1. Adding event listeners
+2. Setting the `tabIndex` on each panel
+3. Adding event listeners
 
 I've also added placeholder methods for handling the `click` and `keyup` events. We'll focus on implementing `handleClick()` first.
 
 Since we'll be handling clicks within `MyAccordion`, we can remove the current click functionality from `MyAccordionPanel`:
 
-```js
+```javascript
 // panel.js
 class MyAccordionPanel extends LitElement {
   constructor() {
@@ -598,7 +598,7 @@ customElements.define("my-accordion-panel", MyAccordionPanel);
 
 In the code above, I've removed the `exapand()` method, and removed the `@click` that called it from the `button`. Now if you try interacting with `my-accordion` in the browser, nothing should happen. Let's focus on reimplementing this functionality in the `handleClick()` method on `MyAccordion`.
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   /* ... */
@@ -627,7 +627,7 @@ Clicking within `my-accordion`, will return an event, and the target of this eve
 
 The beauty of having the `panels` property on the component is that anytime that property changes, the `shouldUpdate()` lifecycle method fires, causing the component's DOM to update in the browser. Go ahead and try clicking on the panels in the browser, it should work similarly to how it did previously. We can update the `handleClick()` method further to check whether the accordion supports multi-panel.
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   /* ... */
@@ -660,7 +660,7 @@ class MyAccordion extends LitElement {
 customElements.define("my-accordion", MyAccordion);
 ```
 
-Until now, the panel actually defaulted to multi-panel support. As we mapped over each item in `panels`, the `handleClick()` method merely checked whether the target panel's state changed. To fully implement multi-panel, we'll first check whether the `multiPanel` property is truthy, _and_ the current panel is **not** the same as `target` _and_ whether the current panel has the `expanded` attribute. If all those conditions are true, we'll close the panel.
+Until now, the panel actually defaulted to multi-panel support. As we mapped over each item in `panels`, the `handleClick()` method merely checked whether the target panel's state changed. To fully implement multi-panel, we'll first check whether the `multiPanel` property is truthy, *and* the current panel is **not** the same as `target` *and* whether the current panel has the `expanded` attribute. If all those conditions are true, we'll close the panel.
 
 If you give the updated accordion a whirl, it should close any previously opened panel when you select a new panel. Adding `multiPanel=true` to the `my-accordion` element will allow multiple panels to be open at once.
 
@@ -668,7 +668,7 @@ If you give the updated accordion a whirl, it should close any previously opened
 
 Implementing the `handleClick()` method gives us a good baseline for handling our keyboard interaction. To avoid repetition, the first thing we need to do is refactor things a bit to abstract the functionality in `handleClick()` to it's own method. This will allow us to reuse the functionality in `handleKeyup()`:
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   /* ... */
@@ -710,7 +710,7 @@ customElements.define("my-accordion", MyAccordion);
 
 The first thing we'll do to implement `handleKeyup()` is stub out the `switch` we'll use to check which key has been pressed.
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   /* ... */
@@ -749,7 +749,7 @@ customElements.define("my-accordion", MyAccordion);
 
 We're using `keyCode` here instead of `key` because the value returned for `SPACE` is blank and difficult to manage. I used `let` for the `target` because we'll be reassigning the value in the next step. Implementing the logic for each of the `keyup` scenarios is relatively simple:
 
-```js
+```javascript
 // index.js
 class MyAccordion extends LitElement {
   /* ... */
@@ -806,7 +806,7 @@ To help users keep track of which panel is selected, we update focus by calling 
 
 All of this is great, but there is one small problem: tab functionality is now broken when `my-accordion` has focus. Let's make one more change to restore tab functionality:
 
-```js
+```javascript
 import { LitElement, html, css } from "lit-element";
 import "./panel";
 
@@ -882,48 +882,47 @@ And that's it! We now have a fully-functioning, accessible accordion web compone
 <alcatraz-accordion>
   <alcatraz-accordion-panel label="K2" expanded="true">
     <figure>
-      <img
-        src="/admin/images/posts/build-interactive-web-component-lit-element/k2-in-the-sun@2x.jpg"
-        alt="K2 enjoying a sunny day"
-      />
+      <img src="/admin/images/posts/build-interactive-web-component-lit-element/k2-in-the-sun@2x.jpg" alt="K2 enjoying a sunny day" />
+
       <figcaption>
         Age: 13
+
         <br />
+
         Likes: treats, sunshine, his siblings
       </figcaption>
     </figure>
   </alcatraz-accordion-panel>
+
   <alcatraz-accordion-panel label="Whitney">
     <figure>
-      <img
-        src="/admin/images/posts/build-interactive-web-component-lit-element/whitney-in-bed@2x.jpg"
-        alt="Whitney enjoying an afternoon in bed"
-      />
+      <img src="/admin/images/posts/build-interactive-web-component-lit-element/whitney-in-bed@2x.jpg" alt="Whitney enjoying an afternoon in bed" />
+
       <figcaption>
         Age: 13
+
         <br />
+
         Likes: treats, sunshine, fireplaces
       </figcaption>
     </figure>
   </alcatraz-accordion-panel>
+
   <alcatraz-accordion-panel label="Minnie">
     <figure>
-      <img
-        src="/admin/images/posts/build-interactive-web-component-lit-element/minnie-cuddling-mouse.jpg"
-        alt="Minnie cuddling a toy mouse"
-      />
+      <img src="/admin/images/posts/build-interactive-web-component-lit-element/minnie-cuddling-mouse.jpg" alt="Minnie cuddling a toy mouse" />
+
       <figcaption>
         Age: 4<br />
         Likes: toy mice & birdies, playtime, getting into trouble
       </figcaption>
     </figure>
   </alcatraz-accordion-panel>
+
   <alcatraz-accordion-panel label="Paul">
     <figure>
-      <img
-        src="/admin/images/posts/build-interactive-web-component-lit-element/paul-in-sun.jpg"
-        alt="Paul hanging out in the afternoon sun"
-      />
+      <img src="/admin/images/posts/build-interactive-web-component-lit-element/paul-in-sun.jpg" alt="Paul hanging out in the afternoon sun" />
+
       <figcaption>
         Age: 3<br />
         Likes: his humans, cuddles, high places
