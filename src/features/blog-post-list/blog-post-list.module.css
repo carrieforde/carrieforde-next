@@ -1,0 +1,9 @@
+.blogPostList {
+  --blog-post-list-block-spacing: calc(var(--base-spacing) * 6);
+
+  composes: listReset from "@/styles/utilities.module.css";
+}
+
+.blogPostListItem + .blogPostListItem {
+  margin-block-start: var(--blog-post-list-block-spacing);
+}

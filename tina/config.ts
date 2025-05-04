@@ -1,4 +1,4 @@
-import { defineConfig } from "tinacms";
+import { defineConfig, Template, TinaField } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -70,6 +70,30 @@ const templates: Template[] = [
   },
 ];
 
+const SHARED_FIELDS: TinaField[] = [
+  {
+    type: "string",
+    name: "title",
+    label: "Title",
+    isTitle: true,
+    required: true,
+  },
+  {
+    type: "string",
+    name: "description",
+    label: "Description",
+    list: true,
+  },
+  {
+    type: "rich-text",
+    name: "body",
+    label: "Body",
+    isBody: true,
+    required: true,
+    templates,
+  },
+];
+
 export default defineConfig({
   branch,
 
@@ -96,48 +120,36 @@ export default defineConfig({
         label: "Pages",
         path: "content/pages",
         format: "mdx",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "string",
-            name: "description",
-            label: "Description",
-            list: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-            required: true,
-            templates,
-          },
-        ],
+        fields: SHARED_FIELDS,
       },
       {
         name: "post",
         label: "Posts",
-        path: "content/posts",
         format: "mdx",
+        path: "content/posts",
         fields: [
+          ...SHARED_FIELDS,
           {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
+            type: "datetime",
+            name: "date",
+            label: "Date",
             required: true,
           },
           {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
+            type: "datetime",
+            name: "updated",
+            label: "Updated",
+          },
+          {
+            type: "string",
+            name: "category",
+            label: "Category",
+            options: ["Development", "JavaScript", "WordPress"],
+          },
+          {
+            type: "boolean",
+            name: "showToc",
+            label: "Show Table of Contents",
           },
         ],
         ui: {
