@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 import { Page } from "@/components/page/page";
+import { SinglePage } from "@/features/single-page/single-page";
 import { TINA_COMPONENTS } from "@/lib/tina/tina-components";
 import client from "@tina/__generated__/client";
 
@@ -47,13 +48,7 @@ export async function generateMetadata({ params }: PageTemplateProps) {
 
 export default async function PageTemplate({ params }: PageTemplateProps) {
   const { page } = await params;
-  const { data } = await getPageData(page);
+  const props = await getPageData(page);
 
-  return (
-    <Page>
-      <Page.Title>{data.page.title}</Page.Title>
-      <Page.Description description={data.page.description} />
-      <TinaMarkdown components={TINA_COMPONENTS} content={data.page.body} />
-    </Page>
-  );
+  return <SinglePage {...props} />;
 }
